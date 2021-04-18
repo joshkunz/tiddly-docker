@@ -19,7 +19,8 @@ docker run --rm -it ghcr.io/joshkunz/tiddly:latest --help
 ```
 
 By default, the container looks for Wiki files in the `/wiki` directory. To
-persist wiki files across instances, an external folder can be mounted there:
+persist wiki files across instances, an external folder can be mounted to
+that directory:
 
 ```bash
 docker run -v /some/path:/wiki ghcr.io/joshkunz/tiddly:latest
