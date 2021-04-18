@@ -14,12 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: recursive
       - name: Build
         run: |
           docker build -t test/tiddly:latest .
       - name: Test
         run: |
-          ./test/bats/bin/bats test/test.bats
+          env CONTAINER=test/tiddly:latest ./test/bats/bin/bats test/test.bats
       - name: Deploy
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         uses: docker/build-push-action@v2
