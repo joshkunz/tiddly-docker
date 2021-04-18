@@ -27,7 +27,9 @@ docker run -v /some/path:/wiki ghcr.io/joshkunz/tiddly:latest
 
 The container can also be configured with the following variables:
 
+| Variable | Description |
+| -------- | ----------- |
 | `WIKI_PATH` | Instead of `/wiki` this path will be used in the container. |
 | `DISABLE_AUTO_INIT` | By default, the container will initialize the `WIKI_PATH` directory with a new empty wiki if there is no wiki manifest in the folder. If this environment is set to `true` (that exact text) it will disable this initialization behavior. |
 
-[TiddlyWiki][]: https://tiddlywiki.com
+[TiddlyWiki]: https://tiddlywiki.com
