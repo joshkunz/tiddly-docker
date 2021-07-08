@@ -35,7 +35,16 @@ jobs:
     steps:
       - name: Compute Version
         id: version
-        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+        run: |-
+          echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
+          # Find the default tiddlywiki version at this commit in the
+          # Dockerfile.
+          tw_version="$(cat Dockerfile | awk '/^ARG TIDDLYWIKI_VERSION/ { print $3 }')"
+          if [[ -z "${tw_version}" ]]; then
+            echo "Failed to find TiddlyWiki version" >&2
+            exit 1
+          fi
+          echo "::set-output name=TIDDLYWIKI_VERSION::${tw_version}"
       - name: Log in to GHCR
         uses: docker/login-action@v1
         with:
@@ -54,5 +63,7 @@ jobs:
           tags: |
             jkz0/tiddly:latest
             jkz0/tiddly:${{ steps.version.outputs.VERSION }}
+            jkz0/tiddly:tiddly-wiki-${{ steps.version.outputs.TIDDLYWIKI_VERSION }}
             ghcr.io/joshkunz/tiddly-docker/tiddly:latest
             ghcr.io/joshkunz/tiddly-docker/tiddly:${{ steps.version.outputs.VERSION }}
+            ghcr.io/joshkunz/tiddly-docker/tiddly:tiddly-wiki-${{ steps.version.outputs.TIDDLYWIKI_VERSION }}
