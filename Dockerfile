@@ -1,6 +1,8 @@
 FROM node:16.4.2
 
-RUN npm install -g tiddlywiki && \
+ARG TIDDLYWIKI_VERSION 5.1.23
+
+RUN npm install -g tiddlywiki@${TIDDLYWIKI_VERSION} && \
     tiddlywiki --version
 
 ADD tiddlywiki_or_autoinit.sh /bin
