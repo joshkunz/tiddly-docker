@@ -1,4 +1,4 @@
-FROM node:15
+FROM node:16.4.2
 
 RUN npm install -g tiddlywiki && \
     tiddlywiki --version
