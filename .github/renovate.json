@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "workarounds:all",
+    "group:monorepos",
+    "group:recommended",
+    ":timezone(America/Los_Angeles)"
+  ]
+}
