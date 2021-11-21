@@ -42,7 +42,7 @@ jobs:
           echo "::set-output name=VERSION::${GITHUB_REF#refs/tags/}"
           # Find the default tiddlywiki version at this commit in the
           # Dockerfile.
-          tw_version="$(cat Dockerfile | awk '/^ARG TIDDLYWIKI_VERSION/ { print $3 }')"
+          tw_version="$(cat Dockerfile | egrep '^ARG TIDDLYWIKI_VERSION=' | cut -d= -f2)"
           if [[ -z "${tw_version}" ]]; then
             echo "Failed to find TiddlyWiki version" >&2
             exit 1
