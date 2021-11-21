@@ -3,6 +3,17 @@
     "workarounds:all",
     "group:monorepos",
     "group:recommended",
-    ":timezone(America/Los_Angeles)"
+    ":timezone(America/Los_Angeles)",
+    "regexManagers:dockerfileVersions"
+  ],
+  "git-submodules": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["git-submodules"],
+      "matchPackageNames": ["test/bats"],
+      "schedule": ["after 10pm and before 5am every saturday"]
+    }
   ]
 }
