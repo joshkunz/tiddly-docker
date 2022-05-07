@@ -49,13 +49,13 @@ jobs:
           fi
           echo "::set-output name=TIDDLYWIKI_VERSION::${tw_version}"
       - name: Log in to GHCR
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Log into Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: jkz0 
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
