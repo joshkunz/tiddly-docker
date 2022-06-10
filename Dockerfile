@@ -3,7 +3,7 @@ FROM node:18.3.0
 # renovate: datasource=npm depName=tiddlywiki versioning=npm
 ARG TIDDLYWIKI_VERSION=5.2.2
 
-RUN npm install -g tiddlywiki@${TIDDLYWIKI_VERSION} && \
+RUN npm install --location=global tiddlywiki@${TIDDLYWIKI_VERSION} && \
     tiddlywiki --version
 
 ADD tiddlywiki_or_autoinit.sh /bin
