@@ -60,7 +60,7 @@ jobs:
           username: jkz0 
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Deploy
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           push: true
           tags: |
