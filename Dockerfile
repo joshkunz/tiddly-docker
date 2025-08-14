@@ -1,4 +1,4 @@
-FROM node:22.17.0
+FROM node:22.18.0
 
 # renovate: datasource=npm depName=tiddlywiki versioning=npm
 ARG TIDDLYWIKI_VERSION=5.3.7
