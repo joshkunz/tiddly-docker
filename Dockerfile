@@ -1,7 +1,7 @@
 FROM node:24.14.1
 
 # renovate: datasource=npm depName=tiddlywiki versioning=npm
-ARG TIDDLYWIKI_VERSION=5.3.8
+ARG TIDDLYWIKI_VERSION=5.4.1
 
 RUN npm install --location=global tiddlywiki@${TIDDLYWIKI_VERSION} && \
     tiddlywiki --version
